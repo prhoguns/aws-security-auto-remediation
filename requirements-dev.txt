@@ -1,0 +1,4 @@
+boto3==1.35.90
+moto[s3,ec2,iam,sns,events]==5.0.25
+pytest==8.3.4
+ruff==0.8.4
