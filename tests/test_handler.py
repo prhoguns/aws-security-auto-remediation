@@ -192,7 +192,8 @@ def test_every_action_is_published_to_sns(monkeypatch):
         lambda a, r, d: published.append((a, r)) or {"action": a, "resource": r, **d},
     )
     boto3.client("s3").create_bucket(
-        Bucket="bucket-one", CreateBucketConfiguration={"LocationConstraint": "ca-central-1"}
+        Bucket="bucket-one",
+        CreateBucketConfiguration={"LocationConstraint": "ca-central-1"},
     )
     handler.handler(config_event("s3-bucket-public-read-prohibited", "bucket-one"))
     assert published == [("s3_public_access_block", "bucket-one")]
