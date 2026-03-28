@@ -1,5 +1,7 @@
 # AWS Security Auto-Remediation
 
+_Portfolio sprint timeline: January–September 2026. Reported results retain their actual run dates._
+
 Detective controls (CloudTrail, GuardDuty, AWS Config) wired through EventBridge to a Lambda that
 fixes a small set of unambiguous, reversible findings within seconds — and alerts on everything
 else. Deployed with Terraform; the Lambda is tested against a mocked AWS account so the behaviour is
