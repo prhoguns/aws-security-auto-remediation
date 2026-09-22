@@ -82,3 +82,7 @@ terraform/remediation.tf      SNS, Lambda (+ least-privilege IAM), EventBridge r
 - Add `iam-user-mfa-enabled` remediation: attach a deny-all-until-MFA policy rather than alert.
 - Security Hub as the single event source instead of three.
 - Terratest/`terraform plan` against a sandbox account in CI with OIDC.
+
+## Acknowledgments
+
+AI tools assisted with documentation and repository organization.
