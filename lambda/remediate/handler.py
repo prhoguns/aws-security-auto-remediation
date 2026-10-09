@@ -168,9 +168,7 @@ def handler(event: dict, context=None) -> dict:
         rid = detail.get("resourceId", "")
         if rule.startswith("s3-bucket-public"):
             return remediate_public_bucket(rid)
-        if rule.startswith("restricted-ssh") or rule.startswith(
-            "restricted-common-ports"
-        ):
+        if rule.startswith(("restricted-ssh", "restricted-common-ports")):
             return remediate_open_security_group(rid)
         return notify(
             "alert_only", rid, {"rule": rule, "result": "no remediation mapped"}

@@ -7,6 +7,7 @@ from pathlib import Path
 
 import boto3
 import pytest
+from botocore.exceptions import ClientError
 from moto import mock_aws
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lambda" / "remediate"))
@@ -14,7 +15,7 @@ os.environ["AWS_DEFAULT_REGION"] = "ca-central-1"
 os.environ["AWS_ACCESS_KEY_ID"] = "testing"
 os.environ["AWS_SECRET_ACCESS_KEY"] = "testing"
 
-import handler  # noqa: E402
+import handler
 
 
 def config_event(rule, resource, compliance="NON_COMPLIANT"):
@@ -180,7 +181,7 @@ def test_dry_run_changes_nothing():
     )
     r = handler.handler(config_event("s3-bucket-public-write-prohibited", "dry"))
     assert r["dry_run"] is True and r["result"] == "blocked"
-    with pytest.raises(Exception):
+    with pytest.raises(ClientError):
         boto3.client("s3").get_public_access_block(Bucket="dry")
 
 

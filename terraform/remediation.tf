@@ -59,7 +59,7 @@ resource "aws_lambda_function" "remediate" {
   function_name    = "security-auto-remediation"
   role             = aws_iam_role.lambda.arn
   handler          = "handler.handler"
-  runtime          = "python3.12"
+  runtime          = "python3.14"
   timeout          = 30
   filename         = data.archive_file.lambda.output_path
   source_code_hash = data.archive_file.lambda.output_base64sha256
