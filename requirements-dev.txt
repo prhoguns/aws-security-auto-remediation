@@ -1,4 +1,4 @@
-boto3==1.43.110
-moto[s3,ec2,iam,sns,events]==5.2.3
-pytest==9.1.1
-ruff==0.16.10
+boto3==1.43.121
+moto[s3,ec2,iam,sns,events]==5.2.5
+pytest==9.2.0
+ruff==0.17.3
